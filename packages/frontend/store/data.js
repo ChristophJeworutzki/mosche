@@ -8,12 +8,18 @@ export const state = () => ({
 })
 
 export const actions = {
-  async fetchData({ commit, state }) {
-    const response = await this.$axios.get('/api/v1/data/')
-    const { data } = response
-    if (data) {
-      commit('setData', data)
-    }
+  fetchData({ commit, state }) {
+    this.$axios
+      .get('/api/v1/data/')
+      .then((response) => {
+        const { data } = response
+        if (data) {
+          commit('setData', data)
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   },
 }
 
