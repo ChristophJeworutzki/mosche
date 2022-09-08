@@ -67,6 +67,7 @@ export default {
   mounted() {
     this.video = this.$el
     this.video.volume = 0.5
+    this.load()
   },
   destroyed() {
     this.destroy()
@@ -75,10 +76,9 @@ export default {
     onVisibilityChange(inview) {
       this.temp.inview = inview
       if (this.temp.inview) {
-        this.load()
+        this.play()
       } else {
-        this.destroy()
-        this.temp.loaded = false
+        this.pause()
       }
     },
     load() {
@@ -93,7 +93,6 @@ export default {
         this.temp.loaded = true
       }
       this.video.muted = this.muted
-      this.play()
     },
     play() {
       if (!this.temp.loaded) {

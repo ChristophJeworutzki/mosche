@@ -26,16 +26,17 @@ function transform_file($value, $post_id, $field) {
   $playbackId = $muxAsset->__get('publicPlaybackID');
 
   return [
-    'id'            => intval($muxAsset->attachmentId),
+    'type'          => 'video',
+    'id'            => $value['id'],
     'playbackID'    => $playbackId,
-    'title'         => $muxAsset->title,
+    'title'         => $value['title'],
     'width'         => intval($muxAsset->width),
     'height'        => intval($muxAsset->height),
     'status'        => $muxAsset->status,
     'duration'      => floatval($muxAsset->duration),
     'aspectRatio'   => $muxAsset->aspectRatio,
-    'thumbnailTime' => floatval(get_post_meta($attachmentId, '_thumbnail_time', true)),
-    'url'           => wp_get_attachment_url($attachmentId),
+    'thumbnailTime' => floatval(get_post_meta($value['id'], '_thumbnail_time', true)),
+    'src'           => $value['url'],
     'caption'       => $value['caption'],
     'description'   => $value['description'],
   ];

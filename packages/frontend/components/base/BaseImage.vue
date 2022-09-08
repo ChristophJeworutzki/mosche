@@ -8,6 +8,7 @@
     ]"
     :data-src="src"
     :data-srcset="srcset"
+    :data-parent-fit="fit"
     data-sizes="auto"
     draggable="false"
     :style="computedStyle"

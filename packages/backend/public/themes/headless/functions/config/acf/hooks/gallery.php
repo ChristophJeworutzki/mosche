@@ -33,9 +33,9 @@ function transform_gallery($value, $post_id, $field) {
           $playbackId = $muxAsset->__get('publicPlaybackID');
           $value[$key] = [
             'type'          => 'video',
-            'id'            => intval($muxAsset->attachmentId),
+            'id'            => $attachment['id'],
             'playbackID'    => $playbackId,
-            'title'         => $muxAsset->title,
+            'title'         => $attachment['title'],
             'width'         => intval($muxAsset->width),
             'height'        => intval($muxAsset->height),
             'status'        => $muxAsset->status,
