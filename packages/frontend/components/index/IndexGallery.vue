@@ -8,7 +8,7 @@
           class="keen-slider__slide"
         >
           <template v-if="item.type === 'image'">
-            <base-image :srcset="item.srcset" fit="contain" />
+            <base-image :srcset="item.srcset" fit="contain" sizes="100vw" />
           </template>
           <template v-if="item.type === 'video'">
             <base-video

@@ -9,7 +9,7 @@
     :data-src="src"
     :data-srcset="srcset"
     :data-parent-fit="fit"
-    data-sizes="auto"
+    :data-sizes="sizes"
     draggable="false"
     :style="computedStyle"
   />
@@ -26,6 +26,10 @@ export default {
     srcset: {
       type: String,
       default: undefined,
+    },
+    sizes: {
+      type: String,
+      default: 'auto',
     },
     ratio: {
       type: [String],
