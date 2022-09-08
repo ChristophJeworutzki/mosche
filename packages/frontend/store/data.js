@@ -12,6 +12,7 @@ export const actions = {
     await this.$axios
       .get('/api/v1/options')
       .then((response) => {
+        console.log(response)
         commit('setData', response.data)
       })
       .catch((err) => {
