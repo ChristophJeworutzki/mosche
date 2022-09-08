@@ -9,6 +9,7 @@ export const state = () => ({
 
 export const actions = {
   async fetchData({ commit, state }) {
+    console.log(this.$axios.defaults.baseURL)
     await this.$axios
       .get('/api/v1/data')
       .then((response) => {
