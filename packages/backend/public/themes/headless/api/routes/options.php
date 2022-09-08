@@ -1,6 +1,6 @@
 <?php
 
-function rest_get_data(WP_REST_Request $request) {
+function rest_get_options(WP_REST_Request $request) {
 
   $services = get_posts([
     'post_type'        => 'service',
@@ -46,8 +46,8 @@ function flat_post($posts) {
 }
 
 add_action('rest_api_init', function () {
-  register_rest_route('v1', '/data', array(
+  register_rest_route('v1', '/options', array(
     'methods' => 'GET',
-    'callback' => 'rest_get_data'
+    'callback' => 'rest_get_options'
   ));
 });
