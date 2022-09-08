@@ -1,0 +1,13 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+svg {
+  display: inline-block;
+}
+
+ul,
+ol {
+  @include reset-list;
+}

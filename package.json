@@ -1,0 +1,15 @@
+{
+  "name": "@mosche/mosche",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "cd ./packages/frontend/ && nuxt",
+    "build": "cd ./packages/frontend/ && nuxt build",
+    "start": "cd ./packages/frontend/ && nuxt start",
+    "start:tunnel": "ngrok start --config ./ngrok.yml --all"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

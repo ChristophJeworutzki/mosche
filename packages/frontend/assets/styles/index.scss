@@ -1,0 +1,35 @@
+// 1. Include Bootstrap functions first
+@import 'bootstrap/scss/functions';
+
+// 2. Include variable and utilities overrides, mixins and functions
+@import 'variables';
+@import 'utilities';
+@import 'mixins';
+@import 'functions';
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+
+// 5. Include any optional Bootstrap components here
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid';
+
+// 6. Include Bootstrap helpers
+@import 'bootstrap/scss/helpers';
+
+// 7. Include Bootstrap utilities api
+@import 'bootstrap/scss/utilities/api';
+
+// 8. Include custom reboot
+@import 'reboot';
+
+// 9. Include any custom styles
+@import 'animations';
+@import 'transitions';
+@import 'type';
+@import 'root';

@@ -1,0 +1,11 @@
+@mixin media-hover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+@mixin media-not-hover {
+  @media not all and (hover: hover) {
+    @content;
+  }
+}

@@ -1,0 +1,106 @@
+body.login {
+  background-color: #fe6f61;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#login {
+  padding: 0;
+  margin: 0;
+}
+
+#loginform {
+  border-radius: 8px;
+  border: 0;
+  box-shadow: 0 0 2rem 0 rgba(30, 30, 30, 0.15);
+}
+
+#login h1 a,
+.login h1 a {
+  outline: none;
+  background-image: none, url("/admin/wp-admin/images/wordpress-logo-white.svg");
+}
+
+.wp-core-ui .button-primary {
+  cursor: pointer;
+  background: #fe6f61;
+  border-color: #fe6f61 #fe6f61 #fe6f61;
+  box-shadow: 0 1px 0 #fe6f61;
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px #fe6f61, 1px 0 1px #fe6f61, 0 1px 1px #fe6f61,
+    -1px 0 1px #fe6f61;
+}
+
+.wp-core-ui .button-primary:hover,
+.wp-core-ui .button-primary:focus,
+.wp-core-ui .button-primary:active {
+  background: #fe6f61;
+  border-color: #fe6f61 #fe6f61 #fe6f61;
+  box-shadow: 0 1px 0 #fe6f61;
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px #fe6f61, 1px 0 1px #fe6f61, 0 1px 1px #fe6f61,
+    -1px 0 1px #fe6f61;
+}
+
+.wp-core-ui .button-secondary {
+  color: #fe6f61;
+}
+
+.login #login_error,
+.login .message {
+  border-left: 4px solid #cecece !important;
+}
+
+.login #backtoblog a:hover,
+.login #nav a:hover {
+  color: #ffffff !important;
+}
+
+#backtoblog {
+  display: none !important;
+}
+
+.login #nav a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  opacity: 0.6;
+}
+
+.login #nav a:hover {
+  opacity: 0.6;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="color"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="email"]:focus,
+input[type="month"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="week"]:focus,
+input[type="checkbox"]:focus,
+input[type="radio"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #fe6f61;
+  box-shadow: 0 0 0 1px #fe6f61;
+  outline: 2px solid transparent;
+}
+
+.privacy-policy-page-link {
+  display: none;
+}
+
+.language-switcher {
+  display: none;
+}

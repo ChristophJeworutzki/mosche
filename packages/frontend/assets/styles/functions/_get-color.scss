@@ -1,0 +1,18 @@
+@import './../variables/colors';
+
+@function get-color($token, $opacity: null) {
+  @if not map-has-key($colors, $token) {
+    @error "The color token: '#{$token}' does not exist.";
+  }
+  @if ($opacity) {
+    @if ($opacity > 90) or ($opacity < 10) {
+      @error "The opacity value: '#{$opacity}' must be a number between 10 and 90.";
+    }
+    $opacityValue: map-get($opacity-values, $opacity);
+    $colorValue: map-get($colors, $token);
+    @return rgba($colorValue, $opacityValue);
+  } @else {
+    $colorValue: map-get($colors, $token);
+    @return $colorValue;
+  }
+}

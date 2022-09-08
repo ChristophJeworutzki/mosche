@@ -1,0 +1,72 @@
+// Color system
+
+// default-color-variables
+$white: #fff;
+$black: #000;
+
+$grey-50: #f7f7f7;
+$grey-100: #efefef;
+$grey-200: #e0e0e0;
+$grey-300: #d1d1d1;
+$grey-400: #c1c1c1;
+$grey-500: #b2b2b2;
+$grey-600: #939393;
+$grey-700: #757575;
+$grey-800: #565656;
+$grey-900: #383838;
+$grey: $grey-500;
+
+$info: #1f69ff;
+$success: #41aa75;
+$warning: #ffaa00;
+$danger: #f4502f;
+
+// colors-map
+// This map IS NOT used to generate any utilities.
+$colors: ();
+
+// theme-colors-map
+// This map IS used to generate any utilities.
+$theme-colors: (
+  'white': $white,
+  'black': $black,
+  'grey-50': $grey-50,
+  'grey-100': $grey-100,
+  'grey-200': $grey-200,
+  'grey-300': $grey-300,
+  'grey-400': $grey-400,
+  'grey-500': $grey-500,
+  'grey-600': $grey-600,
+  'grey-700': $grey-700,
+  'grey-800': $grey-800,
+  'grey-900': $grey-900,
+  'grey': $grey,
+  'info': $info,
+  'success': $success,
+  'warning': $warning,
+  'danger': $danger,
+);
+
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+$min-contrast-ratio: 4.5;
+
+// Customize the light and dark text colors for use in our color contrast function.
+$color-contrast-dark: $black;
+$color-contrast-light: $white;
+
+// Reset Bootstrap color maps
+$grays: ();
+$blues: ();
+$indigos: ();
+$purples: ();
+$pinks: ();
+$reds: ();
+$oranges: ();
+$yellows: ();
+$greens: ();
+$teals: ();
+$cyans: ();
+
+// Customize the link color
+$link-color: inherit;
+$link-hover-color: inherit;

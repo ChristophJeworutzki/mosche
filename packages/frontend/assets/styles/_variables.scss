@@ -1,0 +1,13 @@
+// 1. Include color variables first
+@import 'variables/colors';
+
+// 2. Include all variables overrides
+@import 'variables/type';
+@import 'variables/aspect-ratios';
+@import 'variables/body';
+@import 'variables/border-radius';
+@import 'variables/box-shadow';
+@import 'variables/grid';
+@import 'variables/opacity';
+@import 'variables/options';
+@import 'variables/spacing';

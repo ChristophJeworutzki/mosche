@@ -1,0 +1,69 @@
+{
+  "name": "mosche/mosche",
+  "type": "project",
+  "description": "",
+  "license": "MIT",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "github",
+      "name": "wp-sync-db/wp-sync-db",
+      "url": "https://github.com/wp-sync-db/wp-sync-db"
+    },
+    {
+      "type": "github",
+      "name": "wp-sync-db/wp-sync-db-media-files",
+      "url": "https://github.com/wp-sync-db/wp-sync-db-media-files"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "advanced-custom-fields/advanced-custom-fields-pro",
+        "version": "5.8.2",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k={%ACF_PRO_KEY}"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": "^7.3|^8.0",
+    "advanced-custom-fields/advanced-custom-fields-pro": "^5.8",
+    "composer/installers": "~1.0",
+    "ffraenz/private-composer-installer": "^5.0.1",
+    "ilab/ilab-media-tools": "^4.4",
+    "johnpbloch/wordpress": "^5.8",
+    "wp-sync-db/wp-sync-db": "dev-master",
+    "wp-sync-db/wp-sync-db-media-files": "dev-master",
+    "wpackagist-plugin/acf-autosize": "*",
+    "wpackagist-plugin/acf-extended": "*",
+    "wpackagist-plugin/simple-page-ordering": "*",
+    "wpackagist-plugin/wp-rest-api-cache": "*"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "vendor-dir": "packages/backend/vendor",
+    "allow-plugins": {
+      "ffraenz/private-composer-installer": true,
+      "johnpbloch/wordpress-core-installer": true,
+      "composer/installers": true
+    }
+  },
+  "extra": {
+    "installer-paths": {
+      "packages/backend/public/plugins/{$name}": [
+        "type:wordpress-plugin"
+      ]
+    },
+    "wordpress-install-dir": "packages/backend/public/admin"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

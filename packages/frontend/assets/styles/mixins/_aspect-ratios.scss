@@ -1,0 +1,16 @@
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  width: 100%;
+  &:before {
+    content: '';
+    width: 100%;
+    display: block;
+    padding-top: calc($height / $width * 100%);
+  }
+}
+
+@mixin rest-aspect-ratio() {
+  &:before {
+    content: none;
+  }
+}

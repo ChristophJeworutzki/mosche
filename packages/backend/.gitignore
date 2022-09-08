@@ -1,0 +1,12 @@
+# Misc
+.htaccess
+/vendor
+/public/admin
+/public/languages
+/public/plugins/*
+/public/mu-plugins
+/public/upgrade
+/public/uploads
+/public/advanced-cache.php
+/public/mcloud-view-cache
+/public/mcloud-reports

@@ -1,0 +1,17 @@
+@mixin supports-hover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+@mixin supports-backdrop-filter {
+  @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    @content;
+  }
+}
+
+@mixin supports-not-backdrop-filter {
+  @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    @content;
+  }
+}

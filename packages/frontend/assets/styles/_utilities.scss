@@ -1,0 +1,86 @@
+$utilities: (
+  // Modified utilities
+  'position':
+    (
+      property: position,
+      responsive: true,
+      values: static relative absolute fixed sticky,
+    ),
+  'top': (
+    property: top,
+    responsive: true,
+    values: $position-values,
+  ),
+  'width': (
+    property: width,
+    class: w,
+    responsive: true,
+    values: (
+      25: 25%,
+      50: 50%,
+      75: 75%,
+      100: 100%,
+      auto: auto,
+    ),
+  ),
+  'min-viewport-height': (
+    property: min-height,
+    responsive: true,
+    class: min-vh,
+    values: (
+      100: 100vh,
+    ),
+  ),
+  'text-opacity': (
+    css-var: true,
+    class: text-opacity,
+    values: $opacity-values,
+  ),
+  'bg-opacity': (
+    css-var: true,
+    class: bg-opacity,
+    values: $opacity-values,
+  ),
+  'shadow': (
+    property: box-shadow,
+    class: shadow,
+    values: (
+      sm: $box-shadow-sm,
+      md: $box-shadow-md,
+      lg: $box-shadow-lg,
+      xl: $box-shadow-xl,
+      inset: $box-shadow-inset,
+      none: none,
+    ),
+  ),
+  'rounded': (
+    property: border-radius,
+    class: rounded,
+    values: (
+      0: 0,
+      1: $border-radius-1,
+      2: $border-radius-2,
+      3: $border-radius-3,
+      4: $border-radius-4,
+      5: $border-radius-5,
+      6: $border-radius-6,
+      7: $border-radius-7,
+      8: $border-radius-8,
+      9: $border-radius-9,
+      10: $border-radius-10,
+      11: $border-radius-11,
+      12: $border-radius-12,
+      full: $border-radius-full,
+    ),
+  ),
+  // Removed utilities
+  'font-family': null,
+  'font-size': null,
+  'font-style': null,
+  'font-weight': null,
+  'line-height': null,
+  'rounded-top': null,
+  'rounded-end': null,
+  'rounded-bottom': null,
+  'rounded-start': null
+);

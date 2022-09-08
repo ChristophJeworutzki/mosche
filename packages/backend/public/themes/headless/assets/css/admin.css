@@ -1,0 +1,15 @@
+.metabox-holder .postbox-container .empty-container {
+  border: 0;
+}
+
+.acf-field.hide-label > .acf-label {
+  display: none !important;
+}
+
+.acf-gallery .acf-gallery-side .acf-field[data-name="caption"] {
+  display: none !important;
+}
+
+.acf-gallery .acf-gallery-side .acf-field[data-name="alt"] {
+  display: none !important;
+}
