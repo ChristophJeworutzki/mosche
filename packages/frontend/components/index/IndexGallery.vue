@@ -111,6 +111,10 @@ export default {
     }
 
     &__controls {
+      @media (hover: none) and (pointer: coarse) {
+        display: none;
+      }
+
       &__prev,
       &__next {
         position: absolute;

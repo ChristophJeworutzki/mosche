@@ -18,6 +18,6 @@ export default {
 .page--index {
   position: relative;
   width: 100%;
-  height: calc(100vh - 9rem);
+  height: calc((var(--vh, 1vh) * 100) - 9rem);
 }
 </style>

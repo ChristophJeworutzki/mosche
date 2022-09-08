@@ -17,8 +17,8 @@
       </div>
       <div class="page--info__container__end">
         <div class="container">
-          <div class="row justify-content-center gy-sm-0 gy-3">
-            <div class="col-sm-3 text-sm-start text-center">
+          <div class="row justify-content-center gy-sm-0 gy-2">
+            <div class="col-sm-3 col-6">
               <h3 class="text-uppercase">Services</h3>
               <ul class="mt-0.75">
                 <li v-for="({ title }, index) in services" :key="index">
@@ -26,7 +26,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-sm-3 text-sm-start text-center">
+            <div class="col-sm-3 col-6">
               <h3 class="text-uppercase">Clients</h3>
               <ul class="mt-0.75">
                 <li v-for="({ title }, index) in clients" :key="index">
@@ -34,7 +34,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-sm-3 text-sm-start text-center">
+            <div class="col-sm-3 col-6">
               <h3 class="text-uppercase">Magazines</h3>
               <ul class="mt-0.75">
                 <li v-for="({ title }, index) in magazines" :key="index">
@@ -42,7 +42,7 @@
                 </li>
               </ul>
             </div>
-            <div v-if="contact" class="col-sm-3 text-sm-start text-center">
+            <div v-if="contact" class="col-sm-3 col-6">
               <h3 class="text-uppercase">Contact</h3>
               <address class="mt-0.75 mb-0">
                 <span class="d-block" v-html="contact.address" />
@@ -106,6 +106,10 @@ export default {
   width: 100%;
   height: calc(100vh - 9rem);
 
+  @include media-breakpoint-down('sm') {
+    height: auto;
+  }
+
   &__container {
     width: 100%;
     height: 100%;
@@ -116,6 +120,10 @@ export default {
       flex-grow: 1;
       flex-shrink: 0;
       padding: 0 0 6rem 0;
+
+      @include media-breakpoint-down('sm') {
+        padding: 0 0 3rem 0;
+      }
     }
 
     &__end {
@@ -131,6 +139,10 @@ export default {
     background-color: #ff5c00;
     border-radius: 50rem;
     margin: 8vh 0;
+
+    @include media-breakpoint-down('sm') {
+      margin: 3rem 0;
+    }
   }
 }
 </style>

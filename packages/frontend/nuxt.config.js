@@ -3,6 +3,9 @@ require('dotenv').config({ path: path.join(__dirname, '/../../.env') })
 
 export default {
   ssr: true,
+  server: {
+    host: '0.0.0.0',
+  },
   head: {
     title: 'MOSCHE',
     htmlAttrs: {
