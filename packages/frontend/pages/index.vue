@@ -1,5 +1,5 @@
 <template>
-  <main class="page">
+  <main class="page--index">
     <collection-gallery :collection="collection" />
   </main>
 </template>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss">
-.page {
+.page--index {
   position: relative;
   width: 100%;
   height: calc((var(--vh, 1vh) * 100) - 9rem);

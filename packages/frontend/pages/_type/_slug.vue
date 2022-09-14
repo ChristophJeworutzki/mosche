@@ -1,5 +1,5 @@
 <template>
-  <main class="page">
+  <main class="page--collection">
     <collection-gallery :collection="collection" />
   </main>
 </template>
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss">
-.page {
+.page--collection {
   position: relative;
   width: 100%;
   height: calc((var(--vh, 1vh) * 100) - 9rem);

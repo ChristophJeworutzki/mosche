@@ -162,5 +162,11 @@ export default {
       margin: 3rem 0;
     }
   }
+
+  a {
+    &:hover {
+      opacity: 0.33;
+    }
+  }
 }
 </style>
