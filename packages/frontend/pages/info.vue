@@ -21,24 +21,42 @@
             <div class="col-sm-3 col-6">
               <h3 class="text-uppercase">Services</h3>
               <ul class="mt-0.75">
-                <li v-for="({ title }, index) in services" :key="index">
-                  {{ title }}
+                <li
+                  v-for="({ title, slug, collection }, index) in services"
+                  :key="index"
+                >
+                  <nuxt-link v-if="collection" :to="`/services/${slug}`">
+                    {{ title }}
+                  </nuxt-link>
+                  <span v-else> {{ title }}</span>
                 </li>
               </ul>
             </div>
             <div class="col-sm-3 col-6">
               <h3 class="text-uppercase">Clients</h3>
               <ul class="mt-0.75">
-                <li v-for="({ title }, index) in clients" :key="index">
-                  {{ title }}
+                <li
+                  v-for="({ title, slug, collection }, index) in clients"
+                  :key="index"
+                >
+                  <nuxt-link v-if="collection" :to="`/clients/${slug}`">
+                    {{ title }}
+                  </nuxt-link>
+                  <span v-else> {{ title }}</span>
                 </li>
               </ul>
             </div>
             <div class="col-sm-3 col-6">
               <h3 class="text-uppercase">Projects</h3>
               <ul class="mt-0.75">
-                <li v-for="({ title }, index) in projects" :key="index">
-                  {{ title }}
+                <li
+                  v-for="({ title, slug, collection }, index) in projects"
+                  :key="index"
+                >
+                  <nuxt-link v-if="collection" :to="`/projects/${slug}`">
+                    {{ title }}
+                  </nuxt-link>
+                  <span v-else> {{ title }}</span>
                 </li>
               </ul>
             </div>

@@ -1,21 +1,21 @@
 <template>
-  <main class="page--index">
-    <index-gallery :items="gallery" />
+  <main class="page">
+    <collection-gallery :collection="collection" />
   </main>
 </template>
 
 <script>
 export default {
   computed: {
-    gallery() {
-      return this.$store.state?.data?.index?.gallery || []
+    collection() {
+      return this.$store.state?.data?.index?.collection || []
     },
   },
 }
 </script>
 
 <style lang="scss">
-.page--index {
+.page {
   position: relative;
   width: 100%;
   height: calc((var(--vh, 1vh) * 100) - 9rem);

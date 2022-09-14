@@ -1,9 +1,9 @@
 <template>
-  <div class="index-gallery">
-    <div class="index-gallery__slider">
+  <div class="collection-gallery">
+    <div class="collection-gallery__slider">
       <div ref="slider" class="keen-slider">
         <div
-          v-for="(item, index) in items"
+          v-for="(item, index) in collection"
           :key="index"
           class="keen-slider__slide"
         >
@@ -19,18 +19,24 @@
           </template>
         </div>
       </div>
-      <div class="index-gallery__slider__controls">
-        <div class="index-gallery__slider__controls__next" @click="next"></div>
-        <div class="index-gallery__slider__controls__prev" @click="prev"></div>
+      <div class="collection-gallery__slider__controls">
+        <div
+          class="collection-gallery__slider__controls__next"
+          @click="next"
+        ></div>
+        <div
+          class="collection-gallery__slider__controls__prev"
+          @click="prev"
+        ></div>
       </div>
     </div>
-    <div class="index-gallery__details">
-      <template v-if="items[currentIndex]">
-        <div class="index-gallery__details__caption">
+    <div class="collection-gallery__details">
+      <template v-if="collection[currentIndex]">
+        <div class="collection-gallery__details__caption">
           <div class="text-uppercase">
-            {{ items[currentIndex].title }}
+            {{ collection[currentIndex].title }}
           </div>
-          <div>{{ items[currentIndex].description }}</div>
+          <div>{{ collection[currentIndex].description }}</div>
         </div>
       </template>
     </div>
@@ -42,9 +48,9 @@ import 'keen-slider/keen-slider.min.css'
 import KeenSlider from 'keen-slider'
 
 export default {
-  name: 'IndexGallery',
+  name: 'CollectionGallery',
   props: {
-    items: {
+    collection: {
       type: Array,
       default: () => [],
     },
@@ -81,7 +87,7 @@ export default {
 </script>
 
 <style lang="scss">
-.index-gallery {
+.collection-gallery {
   position: relative;
   width: 100%;
   height: 100%;

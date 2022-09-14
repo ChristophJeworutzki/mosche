@@ -24,22 +24,25 @@ function rest_get_options(WP_REST_Request $request) {
   ]);
 
   return [
-    'index'       => get_field('index', 'options'),
+    'index'       => [
+      'collection' => get_field('collection', 'options')
+    ],
     'about'       => get_field('about', 'options'),
     'contact'     => get_field('contact', 'options'),
-    'services'    => flat_post($services),
-    'clients'     => flat_post($clients),
-    'projects'    => flat_post($projects),
+    'services'    => reduce_post($services),
+    'clients'     => reduce_post($clients),
+    'projects'    => reduce_post($projects),
   ];
 }
 
-function flat_post($posts) {
+function reduce_post($posts) {
   $flat = [];
   foreach ($posts as $key => $post) {
     array_push($flat, [
       'id' => $post->ID,
       'title' => $post->post_title,
       'slug' => $post->post_name,
+      'collection' => get_field('collection', $post->ID)
     ]);
   }
   return $flat;
