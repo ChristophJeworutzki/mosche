@@ -16,8 +16,8 @@ function rest_get_options(WP_REST_Request $request) {
     'order'            => 'ASC',
   ]);
 
-  $magazines = get_posts([
-    'post_type'        => 'magazine',
+  $projects = get_posts([
+    'post_type'        => 'project',
     'numberposts'      => -1,
     'orderby'          => 'menu_order',
     'order'            => 'ASC',
@@ -29,7 +29,7 @@ function rest_get_options(WP_REST_Request $request) {
     'contact'     => get_field('contact', 'options'),
     'services'    => flat_post($services),
     'clients'     => flat_post($clients),
-    'magazines'   => flat_post($magazines),
+    'projects'    => flat_post($projects),
   ];
 }
 

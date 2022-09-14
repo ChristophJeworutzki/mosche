@@ -4,7 +4,7 @@ export const state = () => ({
   contact: {},
   services: [],
   clients: [],
-  magazines: [],
+  projects: [],
 })
 
 export const actions = {
@@ -22,6 +22,6 @@ export const mutations = {
     state.contact = data.contact
     state.services = data.services
     state.clients = data.clients
-    state.magazines = data.magazines
+    state.projects = data.projects
   },
 }

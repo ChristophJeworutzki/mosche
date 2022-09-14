@@ -35,9 +35,9 @@
               </ul>
             </div>
             <div class="col-sm-3 col-6">
-              <h3 class="text-uppercase">Magazines</h3>
+              <h3 class="text-uppercase">Projects</h3>
               <ul class="mt-0.75">
-                <li v-for="({ title }, index) in magazines" :key="index">
+                <li v-for="({ title }, index) in projects" :key="index">
                   {{ title }}
                 </li>
               </ul>
@@ -93,8 +93,8 @@ export default {
     clients() {
       return this.$store.state?.data?.clients
     },
-    magazines() {
-      return this.$store.state?.data?.magazines
+    projects() {
+      return this.$store.state?.data?.projects
     },
   },
 }

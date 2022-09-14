@@ -29,13 +29,13 @@ function custom_post_type() {
     'rewrite'             => true
   ));
 
-  register_post_type('magazine', array(
-    'label'               => __('Magazine'),
+  register_post_type('project', array(
+    'label'               => __('Project'),
     'description'         => __(''),
     'labels'              => array(
-      'name'                => __('Magazines'),
-      'singular_name'       => __('Magazin'),
-      'add_new'             => __('Add new Magazin'),
+      'name'                => __('Projects'),
+      'singular_name'       => __('Project'),
+      'add_new'             => __('Add new Project'),
     ),
     'supports'            => array('title'),
     'taxonomies'          => array(''),
@@ -46,7 +46,7 @@ function custom_post_type() {
     'show_in_nav_menus'   => true,
     'show_in_admin_bar'   => false,
     'menu_position'       => 23,
-    'menu_icon'           => 'dashicons-book',
+    'menu_icon'           => 'dashicons-open-folder',
     'can_export'          => true,
     'has_archive'         => false,
     'exclude_from_search' => false,
