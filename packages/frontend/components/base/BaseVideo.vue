@@ -171,12 +171,12 @@ export default {
           this.hls.startLoad()
         }
       }
-      const playPromise = this.video.play()
-      if (playPromise !== null) {
-        playPromise.catch(() => {
+      this.video.play()?.catch(() => {
+        this.mute()
+        this.video.play()?.catch(() => {
           this.temp.showPlayButton = true
         })
-      }
+      })
     },
     pause() {
       this.video.pause()
