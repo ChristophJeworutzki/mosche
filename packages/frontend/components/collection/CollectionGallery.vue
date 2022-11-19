@@ -31,6 +31,16 @@
         <div class="collection-gallery__slider__controls__next" @click="next" />
         <div class="collection-gallery__slider__controls__prev" @click="prev" />
       </div>
+      <template v-if="!hidePagination && collection.length > 1">
+        <div class="collection-gallery__slider__pagination">
+          <span
+            v-for="(nth, index) in collection.length"
+            :key="index"
+            class="collection-gallery__slider__pagination__indicator"
+            :class="{ active: currentIndex === index }"
+          />
+        </div>
+      </template>
     </div>
     <div class="collection-gallery__details">
       <template v-if="collection[currentIndex]">
@@ -55,6 +65,9 @@ export default {
     collection: {
       type: Array,
       default: () => [],
+    },
+    hidePagination: {
+      type: Boolean,
     },
   },
   data() {
@@ -164,6 +177,30 @@ export default {
       &__next {
         right: 0;
         cursor: e-resize;
+      }
+    }
+
+    &__pagination {
+      position: absolute;
+      width: auto;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      overflow: hidden;
+      gap: 0.25rem;
+      mix-blend-mode: difference;
+
+      &__indicator {
+        width: 4px;
+        height: 4px;
+        background-color: rgba($white, 0.25);
+        border-radius: 100%;
+
+        &.active {
+          background-color: $white;
+        }
       }
     }
   }

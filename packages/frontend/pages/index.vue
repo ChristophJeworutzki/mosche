@@ -1,6 +1,6 @@
 <template>
   <main class="page--index">
-    <collection-gallery :collection="collection" />
+    <collection-gallery :collection="collection" hide-pagination />
   </main>
 </template>
 
