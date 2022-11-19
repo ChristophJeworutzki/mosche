@@ -184,7 +184,7 @@ export default {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: $black;
+  background-color: rgba(0, 0, 0, 0.1);
   transform: translate3d(0, 0, 0);
 
   video,
