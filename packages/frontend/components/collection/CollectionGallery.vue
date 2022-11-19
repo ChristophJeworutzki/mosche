@@ -8,13 +8,18 @@
           class="keen-slider__slide"
         >
           <template v-if="item.type === 'image'">
-            <base-image :srcset="item.srcset" :ratio="item.aspectRatio" />
+            <base-image
+              :srcset="item.srcset"
+              :ratio="item.aspectRatio"
+              :class="item.orientation"
+            />
           </template>
           <template v-if="item.type === 'video'">
             <base-video
               :playback-id="item.playbackID"
               :muted="false"
               :ratio="item.aspectRatio"
+              :class="item.orientation"
             />
           </template>
         </div>
@@ -105,14 +110,35 @@ export default {
       &__slide {
         position: relative;
         width: 100%;
+        min-width: 100vw;
         height: calc((var(--vh, 1vh) * 100) - 15rem);
         display: flex;
         justify-content: center;
+        align-items: center;
 
         .base-image,
         .base-video {
-          width: auto;
-          height: 100%;
+          @media (orientation: landscape) {
+            &.landscape {
+              width: auto;
+              height: 100%;
+            }
+            &.portrait {
+              width: auto;
+              height: 100%;
+            }
+          }
+          @media (orientation: portrait) {
+            &.landscape {
+              width: 100%;
+              height: auto;
+            }
+            &.portrait {
+              width: 100%;
+              height: auto;
+              max-height: 100%;
+            }
+          }
         }
       }
     }

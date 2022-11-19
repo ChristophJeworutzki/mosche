@@ -41,6 +41,7 @@ function transform_gallery($value, $post_id, $field) {
             'status'        => $muxAsset->status,
             'duration'      => floatval($muxAsset->duration),
             'aspectRatio'   => $muxAsset->aspectRatio,
+            'orientation'   => get_orientation(intval($muxAsset->width), intval($muxAsset->height)),
             'thumbnailTime' => floatval(get_post_meta($attachment['id'], '_thumbnail_time', true)),
             'src'           => $attachment['url'],
             'caption'       => $attachment['caption'],
