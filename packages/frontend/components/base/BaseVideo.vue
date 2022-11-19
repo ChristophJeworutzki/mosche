@@ -1,6 +1,11 @@
 <template>
   <div
-    v-observe-visibility="onVisibilityChange"
+    v-observe-visibility="{
+      callback: onVisibilityChange,
+      intersection: {
+        threshold: 1,
+      },
+    }"
     class="base-video"
     :class="[
       { 'base-video--fill': fill },
