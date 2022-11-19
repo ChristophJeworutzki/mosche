@@ -21,7 +21,6 @@
       :playsinline="playsinline"
       @play="onPlay"
       @pause="onPause"
-      @suspend="onSuspend"
     />
     <transition name="fade">
       <img
@@ -175,8 +174,7 @@ export default {
       const playPromise = this.video.play()
       if (playPromise !== null) {
         playPromise.catch(() => {
-          this.mute()
-          this.video.play()
+          this.temp.showPlayButton = true
         })
       }
     },
@@ -207,9 +205,6 @@ export default {
     },
     onLoad() {
       this.temp.loaded = true
-    },
-    onSuspend() {
-      this.temp.showPlayButton = true
     },
     onPlay() {
       this.temp.playing = true
