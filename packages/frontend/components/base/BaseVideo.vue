@@ -24,6 +24,10 @@
         :src="thumbnailSrc"
       />
     </transition>
+    <button class="base-video__mute-btn" @click="toggleMute">
+      <template v-if="temp.muted">Unmute</template>
+      <template v-else>Mute</template>
+    </button>
   </div>
 </template>
 
@@ -82,6 +86,7 @@ export default {
         loaded: false,
         playing: false,
         inview: false,
+        muted: this.muted,
       },
     }
   },
@@ -153,13 +158,28 @@ export default {
       if (playPromise !== null) {
         playPromise.catch(() => {
           this.pause()
-          this.video.muted = true
+          this.mute()
           this.play()
         })
       }
     },
     pause() {
       this.video.pause()
+    },
+    toggleMute() {
+      if (this.temp.muted) {
+        this.unmute()
+      } else {
+        this.mute()
+      }
+    },
+    mute() {
+      this.video.muted = true
+      this.temp.muted = true
+    },
+    unmute() {
+      this.video.muted = false
+      this.temp.muted = false
     },
     destroy() {
       if (this.hls) {
@@ -226,6 +246,30 @@ export default {
     img,
     video {
       object-fit: contain;
+    }
+  }
+
+  &__mute-btn {
+    @include reset-button;
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    z-index: 1;
+    width: auto;
+    height: 24px;
+    color: $white;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.125);
+    backdrop-filter: blur(32px);
+    padding: 0 0.5rem;
+    border-radius: 50rem;
+
+    &:hover {
+      color: $white;
     }
   }
 }
