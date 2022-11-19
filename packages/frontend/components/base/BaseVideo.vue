@@ -21,6 +21,7 @@
       :playsinline="playsinline"
       @play="onPlay"
       @pause="onPause"
+      @suspend="onSuspend"
     />
     <transition name="fade">
       <img
@@ -29,6 +30,9 @@
         :src="thumbnailSrc"
       />
     </transition>
+    <button v-if="showPlayButton" class="base-video__play-btn" @click="play">
+      <icon-play />
+    </button>
     <button class="base-video__mute-btn" @click="toggleMute">
       <template v-if="temp.muted">Unmute</template>
       <template v-else>Mute</template>
@@ -39,9 +43,13 @@
 <script>
 import Hls from 'hls.js/dist/hls.light.js'
 import { withQuery } from 'ufo'
+import IconPlay from '~/assets/svg/play.svg?inline'
 
 export default {
   name: 'BaseVideo',
+  components: {
+    IconPlay,
+  },
   props: {
     loop: {
       type: Boolean,
@@ -91,6 +99,7 @@ export default {
         loaded: false,
         playing: false,
         inview: false,
+        showPlayButton: false,
         muted: this.muted,
       },
     }
@@ -195,8 +204,12 @@ export default {
     onLoad() {
       this.temp.loaded = true
     },
+    onSuspend() {
+      this.temp.showPlayButton = true
+    },
     onPlay() {
       this.temp.playing = true
+      this.temp.showPlayButton = false
     },
     onPause() {
       this.temp.playing = false
@@ -250,6 +263,34 @@ export default {
     img,
     video {
       object-fit: contain;
+    }
+  }
+
+  &__play-btn {
+    @include reset-button;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.125);
+    backdrop-filter: blur(32px);
+    padding: 0 0.5rem;
+    border-radius: 100%;
+    padding: 0 0 0 0.25em;
+
+    &:hover {
+      color: $white;
     }
   }
 
