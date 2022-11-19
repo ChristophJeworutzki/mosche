@@ -162,9 +162,8 @@ export default {
       const playPromise = this.video.play()
       if (playPromise !== null) {
         playPromise.catch(() => {
-          this.pause()
           this.mute()
-          this.play()
+          this.video.play()
         })
       }
     },
