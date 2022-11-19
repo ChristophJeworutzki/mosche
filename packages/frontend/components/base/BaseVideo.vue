@@ -17,11 +17,13 @@
       @play="onPlay"
       @pause="onPause"
     />
-    <img
-      v-show="!temp.loaded || !temp.playing"
-      ref="thumbnail"
-      :src="thumbnailSrc"
-    />
+    <transition name="fade">
+      <img
+        v-show="!temp.loaded || !temp.playing"
+        ref="thumbnail"
+        :src="thumbnailSrc"
+      />
+    </transition>
   </div>
 </template>
 
