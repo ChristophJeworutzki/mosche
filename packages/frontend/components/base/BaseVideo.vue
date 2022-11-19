@@ -30,7 +30,11 @@
         :src="thumbnailSrc"
       />
     </transition>
-    <button v-if="showPlayButton" class="base-video__play-btn" @click="play">
+    <button
+      v-if="temp.showPlayButton"
+      class="base-video__play-btn"
+      @click="play"
+    >
       <icon-play />
     </button>
     <button class="base-video__mute-btn" @click="toggleMute">
