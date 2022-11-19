@@ -3,13 +3,12 @@
     class="base-image lazyload"
     :class="[
       { 'base-image--fill': fill },
-      { 'base-image--cover': fill && fit === 'cover' },
-      { 'base-image--contain': fill && fit === 'contain' },
+      { 'base-image--cover': fit === 'cover' },
+      { 'base-image--contain': fit === 'contain' },
     ]"
     :data-src="src"
     :data-srcset="srcset"
-    :data-parent-fit="fit"
-    :data-sizes="sizes"
+    data-sizes="auto"
     draggable="false"
     :style="computedStyle"
   />
@@ -27,9 +26,9 @@ export default {
       type: String,
       default: undefined,
     },
-    sizes: {
-      type: String,
-      default: 'auto',
+    params: {
+      type: Object,
+      default: () => {},
     },
     ratio: {
       type: [String],
@@ -46,13 +45,18 @@ export default {
   },
   computed: {
     computedRatio() {
-      return this.ratio ? this.ratio.split(':') : undefined
+      if (this.ratio) {
+        return this.ratio.split(':')
+      } else {
+        return undefined
+      }
     },
     computedStyle() {
       return {
-        'aspect-ratio': this.computedRatio
-          ? `${this.computedRatio[0]}/${this.computedRatio[1]}`
-          : undefined,
+        'aspect-ratio':
+          this.computedRatio && !this.fill
+            ? `${this.computedRatio[0]}/${this.computedRatio[1]}`
+            : undefined,
       }
     },
   },
@@ -63,22 +67,12 @@ export default {
 .base-image {
   width: 100%;
 
-  &.lazyload,
-  &.lazyloading {
-    opacity: 0;
-  }
-
-  &.lazyloaded {
-    opacity: 1;
-    transition: opacity 100ms;
-  }
-
   &--fill {
     position: absolute;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   &--cover {
@@ -87,6 +81,16 @@ export default {
 
   &--contain {
     object-fit: contain;
+  }
+
+  &.lazyload,
+  &.lazyloading {
+    opacity: 0;
+  }
+
+  &.lazyloaded {
+    opacity: 1;
+    transition: opacity 300ms;
   }
 }
 </style>

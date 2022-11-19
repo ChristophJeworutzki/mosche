@@ -3,7 +3,7 @@
     <a
       href="/"
       @click.prevent="
-        $route.name === 'index' ? $router.push('/info') : $router.push('/')
+        $route.name === 'info' ? $router.push('/') : $router.push('/info')
       "
     >
       <logo />

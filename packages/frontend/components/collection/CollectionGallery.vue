@@ -8,26 +8,23 @@
           class="keen-slider__slide"
         >
           <template v-if="item.type === 'image'">
-            <base-image :srcset="item.srcset" fit="contain" sizes="100vw" />
+            <base-image :srcset="item.srcset" :ratio="item.aspectRatio" />
           </template>
           <template v-if="item.type === 'video'">
             <base-video
               :playback-id="item.playbackID"
               :muted="false"
-              fit="contain"
+              :ratio="item.aspectRatio"
             />
           </template>
         </div>
       </div>
-      <div class="collection-gallery__slider__controls">
-        <div
-          class="collection-gallery__slider__controls__next"
-          @click="next"
-        ></div>
-        <div
-          class="collection-gallery__slider__controls__prev"
-          @click="prev"
-        ></div>
+      <div
+        v-if="collection.length > 1"
+        class="collection-gallery__slider__controls"
+      >
+        <div class="collection-gallery__slider__controls__next" @click="next" />
+        <div class="collection-gallery__slider__controls__prev" @click="prev" />
       </div>
     </div>
     <div class="collection-gallery__details">
@@ -108,14 +105,14 @@ export default {
       &__slide {
         position: relative;
         width: 100%;
-        height: 100%;
+        height: calc((var(--vh, 1vh) * 100) - 15rem);
+        display: flex;
+        justify-content: center;
 
-        img,
-        video {
-          position: absolute;
-          width: 100;
+        .base-image,
+        .base-video {
+          width: auto;
           height: 100%;
-          object-fit: contain;
         }
       }
     }
@@ -147,11 +144,12 @@ export default {
 
   &__details {
     width: 100%;
-    padding: 1.5rem;
+    height: 4rem;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 1rem;
 
     &__caption {
       display: inline-flex;

@@ -1,22 +1,34 @@
 <template>
-  <video
-    v-observe-visibility="{
-      callback: onVisibilityChange,
-      intersection: {
-        threshold: 1,
-      },
-    }"
+  <div
+    v-observe-visibility="onVisibilityChange"
     class="base-video"
-    :loop="loop"
-    :muted="muted"
-    :playsinline="playsinline"
-    @play="onPlay"
-    @pause="onPause"
-  />
+    :class="[
+      { 'base-video--fill': fill },
+      { 'base-video--cover': fill && fit === 'cover' },
+      { 'base-video--contain': fill && fit === 'contain' },
+    ]"
+    :style="computedStyle"
+  >
+    <video
+      ref="video"
+      :loop="loop"
+      :muted="muted"
+      :playsinline="playsinline"
+      @play="onPlay"
+      @pause="onPause"
+    />
+    <img
+      v-show="!temp.loaded || !temp.playing"
+      ref="thumbnail"
+      :src="thumbnailSrc"
+    />
+  </div>
 </template>
 
 <script>
 import Hls from 'hls.js/dist/hls.light.js'
+import { withQuery } from 'ufo'
+
 export default {
   name: 'BaseVideo',
   props: {
@@ -39,6 +51,18 @@ export default {
     thumbnailTime: {
       type: Number,
       default: 0,
+    },
+    ratio: {
+      type: String,
+      default: '16:9',
+    },
+    fit: {
+      type: String,
+      default: 'cover',
+    },
+    fill: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -63,10 +87,33 @@ export default {
     src() {
       return `https://stream.mux.com/${this.playbackId}.m3u8`
     },
+    thumbnailSrc() {
+      const src = `https://image.mux.com/${this.playbackId}/thumbnail.jpg`
+      if (this.thumbnailTime) {
+        return withQuery(src, { time: this.thumbnailTime })
+      } else {
+        return withQuery(src, { time: 0 })
+      }
+    },
+    computedRatio() {
+      if (this.ratio) {
+        return this.ratio.split(':')
+      } else {
+        return undefined
+      }
+    },
+    computedStyle() {
+      return {
+        'aspect-ratio':
+          this.computedRatio && !this.fill
+            ? `${this.computedRatio[0]}/${this.computedRatio[1]}`
+            : undefined,
+      }
+    },
   },
   mounted() {
-    this.video = this.$el
-    this.video.volume = 0.5
+    this.video = this.$refs.video
+    this.thumbnail = this.$refs.thumbnail
     this.load()
   },
   destroyed() {
@@ -78,6 +125,7 @@ export default {
       if (this.temp.inview) {
         this.play()
       } else {
+        this.video.currentTime = 0
         this.pause()
       }
     },
@@ -92,7 +140,6 @@ export default {
         this.video.load()
         this.temp.loaded = true
       }
-      this.video.muted = this.muted
     },
     play() {
       if (!this.temp.loaded) {
@@ -103,10 +150,9 @@ export default {
       const playPromise = this.video.play()
       if (playPromise !== null) {
         playPromise.catch(() => {
-          if (this.muted === false) {
-            this.video.muted = true
-            this.video.play()
-          }
+          this.pause()
+          this.video.muted = true
+          this.play()
         })
       }
     },
@@ -135,6 +181,50 @@ export default {
 
 <style lang="scss">
 .base-video {
+  position: relative;
   width: 100%;
+  overflow: hidden;
+  background-color: $black;
+  transform: translate3d(0, 0, 0);
+
+  video,
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  video {
+    z-index: 0;
+  }
+
+  img {
+    z-index: 1;
+  }
+
+  &--fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &--cover {
+    img,
+    video {
+      object-fit: cover;
+    }
+  }
+
+  &--contain {
+    img,
+    video {
+      object-fit: contain;
+    }
+  }
 }
 </style>
