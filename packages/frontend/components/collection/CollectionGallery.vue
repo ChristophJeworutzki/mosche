@@ -17,9 +17,11 @@
           <template v-if="item.type === 'video'">
             <base-video
               :playback-id="item.playbackID"
-              :muted="false"
+              :muted="$store.state.ui?.muted"
               :ratio="item.aspectRatio"
               :class="item.orientation"
+              @mute="$store.dispatch('ui/mute')"
+              @unmute="$store.dispatch('ui/unmute')"
             />
           </template>
         </div>
@@ -31,7 +33,7 @@
         <div class="collection-gallery__slider__controls__next" @click="next" />
         <div class="collection-gallery__slider__controls__prev" @click="prev" />
       </div>
-      <template v-if="!hidePagination && collection.length > 1">
+      <template v-if="collection.length > 1">
         <div class="collection-gallery__slider__pagination">
           <span
             v-for="(nth, index) in collection.length"
@@ -65,9 +67,6 @@ export default {
     collection: {
       type: Array,
       default: () => [],
-    },
-    hidePagination: {
-      type: Boolean,
     },
   },
   data() {

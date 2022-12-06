@@ -135,6 +135,11 @@ export default {
       }
     },
   },
+  watch: {
+    muted(value) {
+      this.temp.muted = value
+    },
+  },
   mounted() {
     this.video = this.$refs.video
     this.thumbnail = this.$refs.thumbnail
@@ -191,10 +196,12 @@ export default {
     mute() {
       this.video.muted = true
       this.temp.muted = true
+      this.$emit('mute')
     },
     unmute() {
       this.video.muted = false
       this.temp.muted = false
+      this.$emit('unmute')
     },
     destroy() {
       if (this.hls) {
